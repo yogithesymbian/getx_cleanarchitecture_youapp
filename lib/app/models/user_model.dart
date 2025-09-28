@@ -13,17 +13,13 @@ String userModelToJson(UserModel data) => json.encode(data.toJson());
 
 class UserModel extends User {
   final int? userId;
-  @override
-  final String? email;
-  @override
-  final String? username;
   final String? apiToken;
-  bool auth;
+  final bool auth;
 
-  UserModel({
+  const UserModel({
     this.userId,
-    this.email,
-    this.username,
+    super.email,
+    super.username,
     this.apiToken,
     required this.auth,
   });

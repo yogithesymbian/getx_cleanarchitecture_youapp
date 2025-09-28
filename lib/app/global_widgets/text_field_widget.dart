@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:youapp_clean_architecture/common/colors.dart';
 import 'package:youapp_clean_architecture/common/ui.dart';
@@ -42,10 +43,10 @@ class TextFieldWidget extends StatelessWidget {
   final Widget? suffixIcon;
   final Widget? suffix;
   final TextEditingController? controller;
-  final inputFormatters;
-  final maxLines;
-  final readOnly;
-  final labelSecondaryText;
+  final List<TextInputFormatter>? inputFormatters;
+  final int? maxLines;
+  final bool readOnly;
+  final String? labelSecondaryText;
 
   @override
   Widget build(BuildContext context) {

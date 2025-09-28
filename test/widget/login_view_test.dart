@@ -34,7 +34,7 @@ class FakeLoginController extends GetxController implements LoginController {
   LoginUsecase get loginUsecase => throw UnimplementedError();
 
   @override
-  Rx<UserModel> get user => UserModel(auth: false).obs;
+  Rx<UserModel> get user => const UserModel(auth: false).obs;
 
   @override
   bool isFilled() {

@@ -11,8 +11,13 @@ class RootView extends GetView<RootController> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: Helper().onWillPop,
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) async {
+        if (!didPop) {
+          await Helper().onWillPop();
+        }
+      },
       child: Scaffold(
         body: Obx(() => AnimatedSwitcher(
               duration: const Duration(milliseconds: 350),

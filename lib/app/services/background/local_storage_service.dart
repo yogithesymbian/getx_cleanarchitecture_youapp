@@ -18,7 +18,7 @@ class LocalStorageService extends GetxService {
     if (userJson != null) {
       return UserModel.fromJson(jsonDecode(userJson));
     } else {
-      return UserModel(auth: false);
+      return const UserModel(auth: false);
     }
   }
 

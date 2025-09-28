@@ -25,7 +25,7 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<User> register(RegisterPayload payload) async {
     final model = await remoteDatasource.register(payload);
     if (model.message != 'User has been created successfully') {
-      return UserModel(auth: false);
+      return const UserModel(auth: false);
     }
 
     return UserModel(

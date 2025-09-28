@@ -4,7 +4,7 @@ import 'package:youapp_clean_architecture/app/models/user_model.dart';
 import 'local_storage_service.dart';
 
 class UserService extends GetxService {
-  final user = UserModel(auth: false).obs;
+  final user = const UserModel(auth: false).obs;
   LocalStorageService localStorageService = Get.find();
 
   Future<UserService> init() async {
@@ -18,15 +18,15 @@ class UserService extends GetxService {
   Future getCurrentUser() async {
     user.value = await localStorageService.getUserFromStorage();
     if (/* user.value.userId != null && */ user.value.apiToken != null) {
-      user.value.auth = true;
+      user.value = user.value.copyWith(auth: true);
     } else {
-      user.value.auth = false;
+      user.value = user.value.copyWith(auth: false);
     }
   }
 
   Future removeCurrentUser() async {
     await localStorageService.removeCurrentUserFromStorage();
-    user.value = UserModel(auth: false);
+    user.value = const UserModel(auth: false);
   }
 
   bool get isAuth => user.value.auth;
