@@ -16,7 +16,7 @@ class DashboardSubpage extends GetView<DashboardController> {
         systemOverlayStyle: const SystemUiOverlayStyle(
           systemNavigationBarIconBrightness: Brightness.dark,
         ),
-        backgroundColor: Get.theme.primaryColor.withOpacity(0.075),
+        backgroundColor: Get.theme.primaryColor.withValues(alpha: 0.075),
       ),
       body: Obx(() => controller.loading.value
           ? const CircularProgressIndicator()

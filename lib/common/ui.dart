@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Ui {
-  static GetSnackBar SuccessSnackBar(
+  static GetSnackBar successSnackBar(
       {String title = 'success',
       required String message,
       SnackPosition snackPosition = SnackPosition.BOTTOM}) {
@@ -18,7 +18,7 @@ class Ui {
               ?.merge(const TextStyle(color: Colors.white, fontSize: 16))),
       snackPosition: snackPosition,
       margin: const EdgeInsets.all(12),
-      backgroundColor: Colors.green.withOpacity(0.75),
+      backgroundColor: Colors.green.withValues(alpha: 0.75),
       icon: const Icon(Icons.verified, size: 32, color: Colors.white),
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
       borderRadius: 12,
@@ -26,7 +26,7 @@ class Ui {
     );
   }
 
-  static GetSnackBar ErrorSnackBar(
+  static GetSnackBar errorSnackBar(
       {String title = 'error',
       required String message,
       SnackPosition snackPosition = SnackPosition.BOTTOM}) {
@@ -53,7 +53,7 @@ class Ui {
       ),
       snackPosition: snackPosition,
       margin: const EdgeInsets.all(12),
-      backgroundColor: Colors.redAccent.withOpacity(0.75),
+      backgroundColor: Colors.redAccent.withValues(alpha: 0.75),
       icon: const Icon(Icons.error, size: 32, color: Colors.white),
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
       borderRadius: 12,

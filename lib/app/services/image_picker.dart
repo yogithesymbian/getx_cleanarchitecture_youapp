@@ -65,7 +65,7 @@ mixin MyImagePicker {
         }
       }
     } catch (e) {
-      Get.showSnackbar(Ui.ErrorSnackBar(message: e.toString()));
+      Get.showSnackbar(Ui.errorSnackBar(message: e.toString()));
     }
   }
 

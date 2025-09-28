@@ -40,7 +40,7 @@ class LoadingIndicator extends StatelessWidget {
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
+                            color: Colors.black.withValues(alpha: 0.1),
                             spreadRadius: 2,
                             blurRadius: 12,
                             offset: const Offset(0, 4),
@@ -68,7 +68,7 @@ class LoadingIndicator extends StatelessWidget {
                           ),
                           colors: [
                             Get.theme.primaryColor,
-                            Get.theme.primaryColor.withOpacity(0.3),
+                            Get.theme.primaryColor.withValues(alpha: 0.3),
                           ],
                           speed: const Duration(milliseconds: 250),
                         ),

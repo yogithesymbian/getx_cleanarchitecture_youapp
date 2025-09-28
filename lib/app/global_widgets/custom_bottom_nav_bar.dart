@@ -26,7 +26,7 @@ class CustomBottomNavigationBar extends GetView<RootController> {
                 BoxShadow(
                   offset: const Offset(0, -4),
                   blurRadius: 20,
-                  color: Get.theme.primaryColor.withOpacity(0.15),
+                  color: Get.theme.primaryColor.withValues(alpha: 0.15),
                 ),
               ],
             ),
@@ -54,7 +54,9 @@ class CustomBottomNavigationBar extends GetView<RootController> {
       margin: const EdgeInsets.symmetric(vertical: 2),
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: isSelected ? Colors.blue.withOpacity(0.05) : Colors.transparent,
+        color: isSelected
+            ? Colors.blue.withValues(alpha: 0.05)
+            : Colors.transparent,
       ),
       child: Column(
         children: [

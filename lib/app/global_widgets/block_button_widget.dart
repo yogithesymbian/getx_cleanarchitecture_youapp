@@ -16,7 +16,7 @@ class BlockButtonWidget extends StatelessWidget {
 
   final Color color;
   final Widget text;
-  final onPressed;
+  final void Function()? onPressed;
   final double? width;
   final double verticalPadding;
   final double? horizontalMargin;
@@ -44,7 +44,7 @@ class BlockButtonWidget extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: verticalPadding),
           // color: color,
           disabledElevation: 0,
-          disabledTextColor: AppColors.white.color.withOpacity(0.2),
+          disabledTextColor: AppColors.white.color.withValues(alpha: 0.2),
           disabledColor: Get.theme.disabledColor,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),

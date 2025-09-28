@@ -28,7 +28,7 @@ class DashboardController extends GetxController {
       // data = await dashboardService.fetchData();
       Future.delayed(const Duration(seconds: 5));
     } on DioException catch (e) {
-      Get.showSnackbar(Ui.ErrorSnackBar(message: e.message.toString()));
+      Get.showSnackbar(Ui.errorSnackBar(message: e.message.toString()));
     } finally {
       loading.value = false;
       loadingMessage.value = '';

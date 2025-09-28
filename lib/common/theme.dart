@@ -7,7 +7,7 @@ ThemeData getAppTheme() {
     textSelectionTheme: TextSelectionThemeData(
       cursorColor: const Color(0xff614A5E),
       selectionHandleColor: const Color(0xff614A5E),
-      selectionColor: const Color(0xff614A5E).withOpacity(0.25),
+      selectionColor: const Color(0xff614A5E).withValues(alpha: 0.25),
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
