@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:youapp_clean_architecture/common/helper.dart';
 
 ThemeData getAppTheme() {
+  const bgColor = Colors.black;
+  final primaryTextColor = Helper().dynamicTextColor(bgColor);
+
   return ThemeData(
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: bgColor,
     primaryColor: Colors.blue,
     textSelectionTheme: TextSelectionThemeData(
       cursorColor: const Color(0xff614A5E),
@@ -15,42 +19,40 @@ ThemeData getAppTheme() {
       ),
     ),
     fontFamily: 'Varela',
-    textTheme: const TextTheme(
+    textTheme: TextTheme(
       headlineMedium: TextStyle(
         fontWeight: FontWeight.w800,
-        color: Colors.blue,
+        color: primaryTextColor,
         fontSize: 20,
       ),
       headlineSmall: TextStyle(
         fontWeight: FontWeight.w800,
-        color: Color(0xff0C0C0C),
+        color: primaryTextColor,
         fontSize: 16,
       ),
       titleLarge: TextStyle(
         fontWeight: FontWeight.w600,
-        // color: Color(0xff2C2B2B),
-        color: Color(0xffffffff),
+        color: primaryTextColor,
         fontSize: 24,
       ),
       titleMedium: TextStyle(
         fontWeight: FontWeight.w600,
-        color: Color(0xff363535),
+        color: primaryTextColor,
         fontSize: 14,
       ),
       bodyLarge: TextStyle(
         fontWeight: FontWeight.w600,
-        color: Color(0xff484747),
+        color: primaryTextColor,
         fontSize: 16,
       ),
       bodyMedium: TextStyle(
         fontWeight: FontWeight.w600,
-        // color: Color(0xff484747),
-        color: Color(0xffffffff),
+        color: primaryTextColor,
         fontSize: 12,
       ),
       bodySmall: TextStyle(
           fontWeight: FontWeight.w600,
-          color: Color(0xff484747),
+          color: primaryTextColor,
           fontSize: 10,
           overflow: TextOverflow.ellipsis),
     ),

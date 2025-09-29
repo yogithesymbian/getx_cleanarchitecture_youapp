@@ -15,7 +15,7 @@ void main() async {
       title: 'GetX',
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       defaultTransition: Transition.cupertino,
       theme: getAppTheme(),
     ),

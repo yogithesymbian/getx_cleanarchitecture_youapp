@@ -16,6 +16,7 @@ class ErrorEntity implements Exception {
 }
 
 ErrorEntity createErrorEntity(DioException error) {
+  print('[createErrorEntity] ${error.type}');
   switch (error.type) {
     case DioExceptionType.connectionTimeout:
       return ErrorEntity(

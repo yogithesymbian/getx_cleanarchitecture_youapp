@@ -32,11 +32,11 @@ void main() {
 
     await tester.enterText(
       find.byKey(const Key('emailField')),
-      'test@yogiveloper.com',
+      'yogi@yogiveloper.com',
     );
     await tester.enterText(
       find.byKey(const Key('usernameField')),
-      'test@yogiveloper.com',
+      'yogiveloper',
     );
     await tester.enterText(
       find.byKey(const Key('passwordField')),

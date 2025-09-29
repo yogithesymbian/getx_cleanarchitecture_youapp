@@ -14,6 +14,7 @@ String userModelToJson(UserModel data) => json.encode(data.toJson());
 class UserModel extends User {
   final int? userId;
   final String? apiToken;
+  final String? apiMsg;
   final bool auth;
 
   const UserModel({
@@ -21,6 +22,7 @@ class UserModel extends User {
     super.email,
     super.username,
     this.apiToken,
+    this.apiMsg,
     required this.auth,
   });
 
@@ -29,6 +31,7 @@ class UserModel extends User {
     String? email,
     String? username,
     String? apiToken,
+    String? apiMsg,
     bool? auth,
   }) =>
       UserModel(
@@ -36,6 +39,7 @@ class UserModel extends User {
         email: email ?? this.email,
         username: username ?? this.username,
         apiToken: apiToken ?? this.apiToken,
+        apiMsg: apiMsg ?? this.apiMsg,
         auth: auth ?? this.auth,
       );
 
@@ -44,6 +48,7 @@ class UserModel extends User {
         email: json["email"],
         username: json["username"],
         apiToken: json["apiToken"],
+        apiMsg: json["apiMsg"],
         auth: json["auth"],
       );
 
@@ -51,7 +56,7 @@ class UserModel extends User {
         "user_id": userId,
         "email": email,
         "username": username,
-        "apiToken": apiToken,
+        "apiMsg": apiMsg,
         "auth": auth,
       };
 }

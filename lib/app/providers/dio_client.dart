@@ -57,6 +57,46 @@ class DioClient {
           return handler.next(options);
         },
         onResponse: (response, handler) {
+          /* TODO
+          * "Ini status code nggak sesuai,
+          * bisa bikin client salah handle.
+          * Boleh gak kalau error tetap pakai 4xx sesuai standar?"
+          *
+          * Best practice sebagai senior:
+          Utama: komunikasi ke backend supaya pakai standar HTTP code
+          (200 = sukses, 4xx = client error).
+
+          Pragmatis: kalau backend legacy dan gak bisa diubah cepat,
+          bikin interceptor lebih fleksibel
+
+          * solusi pragmatis instead of ideal | trade-off | legacy backend */
+          final data = response.data;
+
+          if (data is Map && data['message'] != null) {
+            final msg = data['message'].toString().toLowerCase();
+
+            // Whitelist pesan yang dianggap sukses
+            final successMessages = [
+              "success",
+              "user has been logged in successfully",
+              "registered successfully",
+            ];
+
+            if (!successMessages.any((m) => msg.contains(m))) {
+              return handler.reject(
+                DioException(
+                  requestOptions: response.requestOptions,
+                  response: response,
+                  type: DioExceptionType.badResponse,
+                  error: ErrorEntity(
+                    code: response.statusCode ?? -1,
+                    message: data['message'],
+                  ),
+                ),
+              );
+            }
+          }
+
           return handler.next(response);
         },
         onError: (DioException e, handler) {

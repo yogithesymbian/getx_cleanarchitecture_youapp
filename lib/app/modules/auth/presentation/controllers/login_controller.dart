@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:youapp_clean_architecture/app/exceptions/network_exceptions.dart';
 import 'package:youapp_clean_architecture/app/models/user_model.dart';
 import 'package:youapp_clean_architecture/app/modules/auth/data/payload/login_payload.dart';
 import 'package:youapp_clean_architecture/app/modules/auth/domain/usecase/login_usecase.dart';
@@ -52,11 +53,12 @@ class LoginController extends GetxController {
       if (result is UserModel) {
         user.value = result;
       }
-
       Get.snackbar("Success", 'Welcome ${result.username}');
-      Get.offAllNamed(Routes.ROOT);
+      // Get.offAllNamed(Routes.ROOT);
+    } on ErrorEntity catch (e) {
+      Get.snackbar("Error Entity", e.message);
     } catch (e) {
-      Get.snackbar("Error", e.toString());
+      Get.snackbar("Error Catch", e.toString());
     } finally {
       loading.value = false;
     }
@@ -68,5 +70,9 @@ class LoginController extends GetxController {
             password.value.isNotEmpty
         ? true
         : false;
+  }
+
+  Future<void> toRegister() async {
+    Get.toNamed(Routes.REGISTER);
   }
 }

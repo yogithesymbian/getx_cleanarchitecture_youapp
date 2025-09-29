@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:youapp_clean_architecture/app/global_widgets/block_button_widget.dart';
 import 'package:youapp_clean_architecture/app/global_widgets/text_field_widget.dart';
-import 'package:youapp_clean_architecture/app/modules/auth/presentation/controllers/login_controller.dart';
+import 'package:youapp_clean_architecture/app/modules/auth/presentation/controllers/register_controller.dart';
 import 'package:youapp_clean_architecture/common/colors.dart';
 import 'package:youapp_clean_architecture/common/theme.dart';
 
-class LoginView extends GetView<LoginController> {
-  const LoginView({super.key});
+class RegisterView extends GetView<RegisterController> {
+  const RegisterView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,10 +26,10 @@ class LoginView extends GetView<LoginController> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 32.0),
                   child: Text(
-                    'Login',
+                    "Register",
                     style: Get.textTheme.titleLarge,
                   ),
-                ).marginOnly(bottom: 12.0),
+                ),
                 TextFieldWidget(
                   key: const Key('emailField'),
                   labelText: "Email",
@@ -47,7 +46,7 @@ class LoginView extends GetView<LoginController> {
                 TextFieldWidget(
                   key: const Key('usernameField'),
                   labelText: "Username",
-                  hintText: "Enter Username",
+                  hintText: "Create Username",
                   onChanged: (input) => controller.username.value = input,
                   onSaved: (input) => controller.username.value = input ?? '',
                   validator: (input) =>
@@ -58,7 +57,7 @@ class LoginView extends GetView<LoginController> {
                   () => TextFieldWidget(
                     key: const Key('passwordField'),
                     labelText: "Password",
-                    hintText: "Enter Password",
+                    hintText: "Create Password",
                     onSaved: (input) => controller.password.value = input ?? '',
                     onChanged: (input) => controller.password.value = input,
                     validator: (input) => input!.isEmpty
@@ -81,16 +80,47 @@ class LoginView extends GetView<LoginController> {
                   ),
                 ),
                 Obx(
+                  () => TextFieldWidget(
+                    key: const Key('passwordConfirmField'),
+                    labelText: "Password",
+                    hintText: "Confirm Password",
+                    onSaved: (input) =>
+                        controller.passwordConfirm.value = input ?? '',
+                    onChanged: (input) =>
+                        controller.passwordConfirm.value = input,
+                    validator: (input) => input!.isEmpty
+                        ? "Field cannot be empty"
+                        : input.length < 3
+                            ? "You must enter 3 character least"
+                            : input != controller.password.value
+                                ? "Confirm Password not match"
+                                : null,
+                    obscureText: controller.hidePassword.value,
+                    keyboardType: TextInputType.visiblePassword,
+                    suffixIcon: GestureDetector(
+                      onTap: () => controller.hidePassword.value =
+                          !controller.hidePassword.value,
+                      child: Icon(
+                        controller.hidePassword.value
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                        color: AppColors.linkTextColor.color,
+                      ),
+                    ),
+                  ),
+                ),
+                Obx(
                   () => BlockButtonWidget(
                     color: AppColors.bgColor.color,
                     text: Text(
-                      'Login',
+                      'Register',
                       style: Get.textTheme.headlineMedium!.copyWith(
                         color: AppColors.white.color.withValues(alpha: 0.8),
                         fontSize: 16,
                       ),
                     ),
-                    onPressed: controller.isFilled() ? controller.login : null,
+                    onPressed:
+                        controller.isFilled() ? controller.register : null,
                     verticalPadding: 14,
                     width: double.infinity,
                   ).marginOnly(top: 24),
@@ -99,18 +129,18 @@ class LoginView extends GetView<LoginController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'No Account ? ',
+                      'Have an account ? ',
                       style: Get.textTheme.bodyMedium,
                     ),
                     TextButton(
-                      onPressed: () => controller.toRegister(),
+                      onPressed: () => controller.toLogin(),
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero,
                         minimumSize: const Size(0, 0),
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       ),
                       child: Text(
-                        'Register here',
+                        'Login here',
                         style: Get.textTheme.bodyMedium?.copyWith(
                           decoration: TextDecoration.underline,
                           color: AppColors.linkTextColor.color,

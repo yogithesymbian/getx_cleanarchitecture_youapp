@@ -1,6 +1,6 @@
 class Routes {
   static const LOGIN = '/login';
-  // static const REGISTER = '/register';
+  static const REGISTER = '/register';
   // static const FORGOT_PASSWORD = '/forgot_password';
   // static const EMAIL_VERIFICATION = '/email_verification';
 

@@ -14,7 +14,8 @@ enum AppColors with ColorValues {
   secondaryTextColor(Color(0xFF363535), "secondaryTextColor"),
   bgColor(Color(0xFFF2F2F4), "bgColor"),
   fieldTextColor(Color(0xFF565656), "fieldTextColor"),
-  primaryColor(Colors.blue, "primaryColor");
+  primaryColor(Colors.blue, "primaryColor"),
+  linkTextColor(Color(0xFFDAC79A), "linkTextColor");
 
   final Color color;
   final String name;
@@ -22,28 +23,25 @@ enum AppColors with ColorValues {
   const AppColors(this.color, this.name);
 
   @override
-  int redCode() => color.red;
+  int redCode() => color.r.round(); // double → int
+  @override
+  int greenCode() => color.g.round();
+  @override
+  int blueCode() => color.b.round();
 
   @override
-  int greenCode() => color.green;
+  String toString() => "Color name is: $name";
 
-  @override
-  int blueCode() => color.blue;
-
-  @override
-  String toString() {
-    super.toString();
-    return "Color name is: $name";
+  String hexCode() {
+    final r = color.r.round().toRadixString(16).padLeft(2, '0');
+    final g = color.g.round().toRadixString(16).padLeft(2, '0');
+    final b = color.b.round().toRadixString(16).padLeft(2, '0');
+    return "#$r$g$b";
   }
-
-  String hexCode() =>
-      "#${color.value.toRadixString(16).substring(2, color.value.toRadixString(16).length)}";
 }
 
 mixin ColorValues {
   int redCode() => -1;
-
   int greenCode() => -1;
-
   int blueCode() => -1;
 }

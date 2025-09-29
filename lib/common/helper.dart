@@ -29,4 +29,31 @@ class Helper {
   String formatDateWithSlash(DateTime date) {
     return DateFormat('HH:mm').format(date);
   }
+
+  Color dynamicTextColor(Color background) {
+    // brightness sederhana (average R/G/B)
+    final brightness =
+        (background.red + background.green + background.blue) / 3;
+
+    return brightness > 180 ? Colors.black : Colors.white;
+  }
+
+  Color dynamicTextColorForGradient(Gradient gradient) {
+    final colors = gradient.colors;
+    double r = 0, g = 0, b = 0;
+
+    for (final color in colors) {
+      r += color.red.toDouble();
+      g += color.green.toDouble();
+      b += color.blue.toDouble();
+    }
+
+    final count = colors.length;
+    r /= count;
+    g /= count;
+    b /= count;
+
+    final brightness = 0.299 * r + 0.587 * g + 0.114 * b;
+    return brightness > 150 ? Colors.black : Colors.white;
+  }
 }

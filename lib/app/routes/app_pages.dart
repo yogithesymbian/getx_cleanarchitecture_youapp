@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:youapp_clean_architecture/app/middlewares/auth_middleware.dart';
+import 'package:youapp_clean_architecture/app/modules/auth/presentation/views/register_view.dart';
 
 import '../modules/root/bindings/root_binding.dart';
 import '../modules/root/views/root_view.dart';
@@ -22,6 +23,10 @@ class AppPages {
     GetPage(
         name: Routes.LOGIN,
         page: () => const LoginView(),
+        binding: AuthBinding()),
+    GetPage(
+        name: Routes.REGISTER,
+        page: () => const RegisterView(),
         binding: AuthBinding()),
   ];
 }

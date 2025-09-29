@@ -45,6 +45,11 @@ class FakeLoginController extends GetxController implements LoginController {
   Future<void> filledTextFieldFromRegisterIfExist() {
     throw UnimplementedError();
   }
+
+  @override
+  Future<void> toRegister() {
+    throw UnimplementedError();
+  }
 }
 
 void main() {
